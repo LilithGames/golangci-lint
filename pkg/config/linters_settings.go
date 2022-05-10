@@ -171,6 +171,7 @@ type LintersSettings struct {
 	Reassign         ReassignSettings
 	Revive           ReviveSettings
 	RowsErrCheck     RowsErrCheckSettings
+	SameAlias        SameAlias
 	Staticcheck      StaticCheckSettings
 	Structcheck      StructCheckSettings
 	Stylecheck       StaticCheckSettings
@@ -559,6 +560,10 @@ type ReviveSettings struct {
 
 type RowsErrCheckSettings struct {
 	Packages []string
+}
+
+type SameAlias struct {
+	SkipAutogens bool `mapstructure:"skip-autogens"`
 }
 
 type StaticCheckSettings struct {
