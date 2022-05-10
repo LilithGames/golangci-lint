@@ -123,6 +123,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 	var nlreturnCfg *config.NlreturnSettings
 	var predeclaredCfg *config.PredeclaredSettings
 	var reviveCfg *config.ReviveSettings
+	var samealiasCfg *config.SameAlias
 	var staticcheckCfg *config.StaticCheckSettings
 	var stylecheckCfg *config.StaticCheckSettings
 	var tagliatelleCfg *config.TagliatelleSettings
@@ -157,6 +158,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		nlreturnCfg = &m.cfg.LintersSettings.Nlreturn
 		predeclaredCfg = &m.cfg.LintersSettings.Predeclared
 		reviveCfg = &m.cfg.LintersSettings.Revive
+		samealiasCfg = &m.cfg.LintersSettings.SameAlias
 		staticcheckCfg = &m.cfg.LintersSettings.Staticcheck
 		stylecheckCfg = &m.cfg.LintersSettings.Stylecheck
 		tagliatelleCfg = &m.cfg.LintersSettings.Tagliatelle
@@ -177,6 +179,12 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 	// The linters are sorted in the alphabetical order (case-insensitive).
 	// When a new linter is added the version in `WithSince(...)` must be the next minor version of golangci-lint.
 	lcs := []*linter.Config{
+		linter.NewConfig(golinters.NewSamealias(samealiasCfg)).
+			WithSince("v1.42.0").
+			WithPresets(linter.PresetStyle).
+			WithLoadForGoAnalysis().
+			WithURL("https://github.com/LilithGames/samealias"),
+
 		linter.NewConfig(golinters.NewAsciicheck()).
 			WithSince("v1.26.0").
 			WithPresets(linter.PresetBugs, linter.PresetStyle).
