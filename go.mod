@@ -109,6 +109,8 @@ require (
 	mvdan.cc/unparam v0.0.0-20220706161116-678bad134442
 )
 
+require github.com/LilithGames/samealias v1.0.4
+
 require (
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
