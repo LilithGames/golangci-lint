@@ -71,7 +71,7 @@ require (
 	github.com/quasilyte/go-ruleguard/dsl v0.3.19
 	github.com/ryancurrah/gomodguard v1.2.3
 	github.com/ryanrolds/sqlclosecheck v0.3.0
-	github.com/sanposhiho/wastedassign/v2 v2.0.6
+	github.com/sanposhiho/wastedassign/v2 v2.0.7
 	github.com/securego/gosec/v2 v2.11.0
 	github.com/shazow/go-diff v0.0.0-20160112020656-b6b7b6733b8c
 	github.com/shirou/gopsutil/v3 v3.22.4
