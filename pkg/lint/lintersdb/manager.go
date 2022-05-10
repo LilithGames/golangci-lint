@@ -155,6 +155,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		promlinterCfg       *config.PromlinterSettings
 		reviveCfg           *config.ReviveSettings
 		rowserrcheckCfg     *config.RowsErrCheckSettings
+		samealiasCfg        *config.SameAlias
 		staticcheckCfg      *config.StaticCheckSettings
 		structcheckCfg      *config.StructCheckSettings
 		stylecheckCfg       *config.StaticCheckSettings
@@ -226,6 +227,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		promlinterCfg = &m.cfg.LintersSettings.Promlinter
 		reviveCfg = &m.cfg.LintersSettings.Revive
 		rowserrcheckCfg = &m.cfg.LintersSettings.RowsErrCheck
+		samealiasCfg = &m.cfg.LintersSettings.SameAlias
 		staticcheckCfg = &m.cfg.LintersSettings.Staticcheck
 		structcheckCfg = &m.cfg.LintersSettings.Structcheck
 		stylecheckCfg = &m.cfg.LintersSettings.Stylecheck
@@ -273,6 +275,12 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 			WithPresets(linter.PresetBugs).
 			WithLoadForGoAnalysis().
 			WithURL("https://github.com/alingse/asasalint"),
+
+		linter.NewConfig(golinters.NewSamealias(samealiasCfg)).
+			WithSince("v1.42.0").
+			WithPresets(linter.PresetStyle).
+			WithLoadForGoAnalysis().
+			WithURL("https://github.com/LilithGames/samealias"),
 
 		linter.NewConfig(golinters.NewAsciicheck()).
 			WithSince("v1.26.0").
